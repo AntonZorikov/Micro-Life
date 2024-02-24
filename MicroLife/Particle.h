@@ -11,7 +11,6 @@ enum ParticleType {
 
 class Particle {
 public:
-    static float size;
     static sf::CircleShape shape;
 
     float x, y, xVelocity = 0, yVelocity = 0;
@@ -19,11 +18,14 @@ public:
     sf::Color color;
 
 public:
+    static float size;
+    static sf::Color rcolor;
+    static sf::Color gcolor;
+    static sf::Color bcolor;
+    static sf::Color ycolor;
     static sf::RenderWindow* window;
 
     static void setWindow(sf::RenderWindow* window_);
-    static void setSize(float size_);
-
     int getX() const;
     int getY() const;
     float getXVelocity();

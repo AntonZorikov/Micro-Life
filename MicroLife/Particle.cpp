@@ -4,12 +4,13 @@ sf::RenderWindow* Particle::window = nullptr;
 float Particle::size = 0.0f;
 sf::CircleShape Particle::shape;
 
+sf::Color Particle::rcolor = sf::Color(255, 0, 0);
+sf::Color Particle::gcolor = sf::Color(0, 255, 0);
+sf::Color Particle::bcolor = sf::Color(255, 255, 0);
+sf::Color Particle::ycolor = sf::Color(0, 255, 255);
+
 void Particle::setWindow(sf::RenderWindow* window_) {
     window = window_;
-}
-
-void Particle::setSize(float size_) {
-    size = size_;
 }
 
 int Particle::getX() const {
@@ -70,16 +71,17 @@ void Particle::move() {
 }
 
 void Particle::draw() {
+    if (type == ParticleType::RED) color = rcolor;
+    else if (type == ParticleType::GREEN) color = gcolor;
+    else if (type == ParticleType::CYAN) color = bcolor;
+    else if (type == ParticleType::YELLOW) color = ycolor;
+
+    shape.setRadius(size);
     shape.setPosition(x, y);
     shape.setFillColor(color);
     window->draw(shape);
 }
 
 Particle::Particle(ParticleType type_, int x_, int y_) : x(x_), y(y_) {
-    shape.setRadius(size);
     type = type_;
-    if (type == ParticleType::RED) color = sf::Color::Red;
-    else if (type == ParticleType::GREEN) color = sf::Color::Green;
-    else if (type == ParticleType::CYAN) color = sf::Color::Cyan;
-    else if (type == ParticleType::YELLOW) color = sf::Color::Yellow;
 }

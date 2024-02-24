@@ -33,5 +33,7 @@
 
 lib/
 include/
+imgui/
+MicroLife/imgui
 x64/
 .vs/
