@@ -14,7 +14,8 @@ private:
     std::vector<Particle> particles_b;
     std::vector<Particle> particles_y;
 
-    void repelCells(std::vector<Particle>& particles_1, const std::vector<Particle>& particles_2, float force, float radius);
+    void repelParticles(std::vector<Particle>& particles_1, const std::vector<Particle>& particles_2, float force, float radius);
+    void attractToHelper(std::vector<Particle>& particles, sf::Vector2f pos, float radius, float force);
 
 public:
     Rule forces[4][4];
